@@ -1,3 +1,5 @@
+import { Attachment } from './../classes/Attachment';
+import { AttachmentService } from './../service/attachmentService/attachment.service';
 import { PageMessage } from './../classes/PageMessage';
 import { MessageService } from './../service/messageService/message.service';
 import { Message } from './../classes/Message';
@@ -15,13 +17,15 @@ export class HomeComponent implements OnInit {
   pageMessage : PageMessage;
   selectedPage : number = 0;
   message: Message[];
+  attachments: Attachment[];
+
 
   getPageMessage(page:number): void {
     this.messService.getPageMessage(page)
         .subscribe(page => this.pageMessage = page)
   
   }
-  constructor(private messService : MessageService) { 
+  constructor(private messService : MessageService, private attachmentService : AttachmentService) { 
 
   }
 /*   onSelect(page: number): void {
@@ -36,6 +40,7 @@ export class HomeComponent implements OnInit {
        response => this.handleSuccessfulResponse(response),
      ); 
 
+
     
      
   }
@@ -47,10 +52,17 @@ export class HomeComponent implements OnInit {
 
 }
 
+handleSuccessfulResponseAttachment(response){
+  this.attachments = response;
+}
+
 
 clickMessage(message){
   console.log(message.content);
   message.unread = !message.unread;
+  this.attachmentService.getAttachmentsForMessage(message.id).subscribe(
+    response => this.handleSuccessfulResponseAttachment(response),
+  );
 
 }
 
@@ -58,9 +70,12 @@ clickMessage2(message){
   console.log("delete");
 }
 
-downloadAttachment(){
-  console.log("downloading...");
+downloadAttachment(attachment){
+  console.log("downloading: " + attachment.name);
 }
+
+
+
 
 
 /*   ngOnInit() {
