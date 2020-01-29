@@ -1,0 +1,145 @@
+<div style="margin-top:30px;" class="container">
+  <div class="row">
+  <div class="col-md-4 messages-container">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Messages </h3>
+        <button class=" btn btn-success btn-new-message"> <i class="material-icons">
+          create
+          </i> </button>
+        <div class="pull-right">
+          <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+          </span>
+        </div>
+      </div>
+      <div class="panel-body">
+        <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" placeholder="Filter Clients" />
+      </div>
+      <table class="table table-hover table-fixed" id="dev-table">
+        <thead>
+          <tr>
+            <th>From</th>
+      
+          </tr>
+        </thead>
+    
+        <tbody >
+          <tr *ngFor="let message of messages">
+            <td (click) = "clickMessage(message)">
+              
+              <i class="material-icons messicon" *ngIf="message.unread" style="color: rgb(245, 173, 18);" >
+                email
+                
+                </i>
+
+                <i class="material-icons messicon" *ngIf="!message.unread" >
+                  mail_outline
+                  </i>
+              {{message.from}}
+              <button style="background-color: transparent; border: 0; padding:0;" (click)="clickMessage2(message)"><i class="material-icons delete-icon" >
+                delete
+                </i></button>
+        
+                <br>
+                <p><small>{{message.dateTime}} </small></p>
+
+            </td>
+
+          
+     
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <div class="col-md-8 show-message-in-big">
+    <div class="row" >
+      <div class="col-sm-12">
+
+        <form>
+     
+          <div class="form-group">
+            
+            <input type="text" class="form-control" id="senderAddress" placeholder="sender@email.com">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+             
+            <input type="text" class="form-control" id="ccInput" placeholder="cc">
+            </div>
+            <div class="form-group col-md-6">
+              
+              <input type="text" class="form-control" id="bccInput" placeholder="bcc">
+            </div>
+          </div>
+          <div class="form-group">
+         
+            <input type="text" class="form-control" id="subjectInput" placeholder="Subject">
+          </div>
+          <div class="form-group">
+            
+            <textarea class="form-control" id="contentInput" rows="20"></textarea>
+          </div>
+
+        </form>
+      </div>
+
+  
+
+      
+      <div class="card" style="width: 8rem; height: 2rem; margin: 0.5rem;">
+        
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text"  (click)="downloadAttachment()"><i class="material-icons attachment-icon">
+            attachment
+            </i> <br>
+            attachment 1
+          </p>
+          
+        </div>
+      </div>
+
+      <div class="card" style="width: 8rem; height: 2rem; margin: 0.5rem;">
+        
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text" (click)="downloadAttachment()"><i class="material-icons attachment-icon">
+            attachment
+            </i>
+          <br>
+          attachment 2
+        </p>
+          
+        </div>
+      </div>
+
+      
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+<nav aria-label="...">
+<ul style="margin-left: 180px;margin-top:-10px;" class="pagination"  *ngIf="pageClient?.content" >
+  <li *ngFor="let page of ' '.repeat(pageMessage.totalPages).split(''), let i = index " (click)="onSelect(i)" [class.active]="i === selectedPage" class="page-item"><a class="page-link" href="#">{{i}}</a></li>
+</ul>
+</nav>

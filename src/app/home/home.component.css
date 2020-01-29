@@ -1,0 +1,98 @@
+.messages-container{
+    padding-left: 0;
+}
+
+
+tbody{
+    height:700px;
+    overflow-y:auto;
+    width: 100%;
+    }
+
+
+    thead,tbody,tr,td,th{
+        display:block;
+      }
+
+
+
+
+.panel-heading{
+    margin-bottom: 15px;
+}
+
+
+.btn-new-message{
+    border-radius: 10px;
+    background-color: #ff8f36;
+    border: 0;
+}
+
+
+i{
+    padding-top: 3px;
+}
+
+
+.messicon{
+    margin: 10px;
+}
+
+small{
+    font-size: 12px;
+    padding-left: 45px;
+}
+
+.delete-icon{
+    position: relative;
+    top: 10px;
+    left: 20px;
+    color: lightcoral;
+}
+
+.show-message-in-big{
+    padding-top: 40px;
+    border: 4px;
+    border: 4px;
+    background-color: #ff8f361f;
+    border-radius: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+
+#senderAddress{
+    height: 50px;
+}
+
+#ccInput{
+    height: 30px;
+}
+
+#bccInput{
+    height: 30px;
+}
+
+.card-body{
+    background-color: transparent;
+    padding:0;
+}
+
+.card{
+    background-color: transparent;
+    border: 0;
+    
+}
+
+.card-text:hover{
+    background-color: #ff9340c7;
+    color: white;
+    padding: 1rem;
+}
+
+.attachment-icon{
+    position: relative;
+    left: 3px;
+    bottom: 10px;
+    font-size: 40px;
+}

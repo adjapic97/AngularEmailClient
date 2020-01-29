@@ -1,0 +1,149 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 admin-column" *ngIf="showAdminBoard">
+<!--       <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <button class="btn btn-secondary">ANDOR</button>
+        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        
+        <div class="input-group-append">
+         
+     
+        
+          <button class="btn btn-outline-secondary" type="button">Search</button>
+        </div>
+      </div> -->
+
+    </div>
+    <div class="col-sm-12 admin-column" *ngIf="showAdminBoard">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light list-nav">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" (click)="openCreateDialog()"><i class="material-icons">
+                person_add
+                </i> <span class="sr-only">(current)</span></a>
+            </li>
+        
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Search Criteria
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                  <a class="dropdown-item" (click) = "searchByUsername()">By Username</a>
+                  <a class="dropdown-item" (click) = "searchByEmail()">By Email</a>
+                  <a class="dropdown-item" (click) = "searchByDisplayname()">By Display Name</a>
+
+                <div class="dropdown-divider"></div>
+
+                  <a class="dropdown-item"  (click) = "andOr()">And Or Search</a>
+                  <a class="dropdown-item" (click) = "fuzzySearch()">Fuzzy Search</a>
+                  <a class="dropdown-item"(click) = "boolSearch()">Boolean Search</a>
+
+              </div>
+            </li>
+       
+          </ul>
+     
+          <form class="form-inline my-2 my-lg-0" *ngIf="andor">
+<!--             <button class="btn btn-secondary" (click) = "andOrF()"> collapse search</button>
+ -->          <input class="form-control" id="firstOption" type="search" placeholder="Search" aria-label="Search">
+            
+              <div class="input-group mb-3">
+         
+                <select class="custom-select" id="andOrSelectFirst">
+                  <option selected></option>
+                  <option value="1">Full Name</option>
+                  <option value="2">Username</option>
+                  <option value="2">Email </option>
+                </select>
+              </div>
+
+              
+              <div class="input-group mb-3">
+         
+                <select class="custom-select" id="andOrSelect">
+                  <option selected>And Or</option>
+                  <option value="1">And</option>
+                  <option value="2">Or</option>
+                </select>
+              </div>
+
+
+            <input class="form-control " type="search" placeholder="Search" aria-label="Search" id="secondOption">
+
+            <div class="input-group mb-3">
+         
+              <select class="custom-select" id="andOrSelectSecond">
+                <option selected></option>
+                <option value="1">Full Name</option>
+                <option value="2">Username</option>
+                <option value="2">Email </option>
+              </select>
+            </div>
+
+            <button class="btn btn-success" type="submit">Search</button>
+          </form>
+
+          <!-- BY DISPLAY NAME SEARCH FORM -->
+
+
+         <!-- BY USERNAME SEARCH FORM -->
+         <form class="form-inline my-2 my-lg-0" *ngIf="byusername">
+           
+            <input class="form-control mr-sm-2" type="search" placeholder="Searching by Username..." aria-label="Search">
+            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+         </form>
+
+
+         <!-- БY EMAIL SEARCH FORM -->
+ 
+
+
+        </div>
+      </nav>
+
+
+    </div>
+    <div class="col-sm-12 " *ngIf="showAdminBoard">
+      <table class="table table-bordered table-hover table-sm ">
+        <thead>
+        <tr>
+          <th>Full Name</th>
+          <th>Username</th>
+          <th>Email Address of Account</th>
+          <th>Edit Account</th>
+          <th>Delete Account</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let account of accounts">
+                <td>{{account.displayName}}</td>
+                <td>{{account.username}}</td>
+                <td>{{account.smtpAddress}}</td>
+                
+                <td><button class="btn btn-warning btn-block"  (click)="openDialog(account)">Edit Account
+                 </button></td>
+                  <td><button class="btn btn-danger  btn-block" (click)="deleteEmployee(account)"> Delete </button></td>
+                </tr>
+        </tbody>
+          </table>
+    </div>
+
+
+ 
+
+  </div>
+
+
+</div>
+
+

@@ -1,0 +1,69 @@
+.container{
+    margin-top: 10%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
+input{
+    height: 2.7em;
+}
+
+.btn-confirm{
+   background-color: #E3474B;
+   border: 0;
+}
+
+
+i{
+    margin-top: 10px;
+}
+
+.list-nav{
+    background-color: #1e6d70!important;
+
+    font-weight: 400;
+    
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-link {
+    color: white;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+}
+
+.dropdown{
+    top: 8px;
+}
+
+.form-control{
+    border-radius: 0;
+    
+}
+
+
+.input-group>.custom-file, .input-group>.custom-select, .input-group>.form-control {
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    width: 1%;
+    height: auto;
+    position: relative;
+    top: 7px;
+    height: 45px;
+}
+
+.input-group[_ngcontent-dmj-c1] > .custom-file[_ngcontent-dmj-c1], .input-group[_ngcontent-dmj-c1] > .custom-select[_ngcontent-dmj-c1], .input-group[_ngcontent-dmj-c1] > .form-control[_ngcontent-dmj-c1] {
+    position: relative;
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+    width: 1%;
+    height: auto;
+    position: relative;
+    top: 7px;
+    height: 45px;
+    border-radius: 0;
+    border-top: 0;
+}

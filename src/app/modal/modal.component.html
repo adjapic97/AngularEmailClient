@@ -1,0 +1,232 @@
+<!-- dialog-modal-example.component.html -->
+<div *ngIf="isSuccessful">
+  <h2>Edited Account of User: {{account.user.username}}</h2>
+  
+</div>
+
+
+<div>
+
+  
+  <form
+  
+  *ngIf="!isSuccessful"
+  name="account"
+  (ngSubmit)=" onSubmit()"
+  f="account">
+
+
+
+
+
+
+
+    <div class="form-group">
+      <label for="smtpaddress">SMTP Address</label>
+      <input 
+      type="text" 
+      class="form-control" 
+      id="smtpaddress"
+      name="smtpAddress"
+      [(ngModel)] = "account.smtpAddress"
+      #smtpAddress = "ngModel"
+      aria-describedby="smtpaddress"
+      value="{{account.smtpAddress}}">
+      <!-- <small id="smtpaddress" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+
+    <div class="form-group">
+      <label for="displayName">Displayed Name</label>
+      <input 
+      type="text" 
+      class="form-control" 
+      id="displayName" 
+      aria-describedby="displayName" 
+      name="displayName"
+      [(ngModel)] = "account.displayName"
+      #displayName = "ngModel"
+      value="{{account.displayName}}">
+      <!-- <small id="smtpaddress" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input 
+      type="text" 
+      class="form-control" 
+      id="username" 
+      aria-describedby="username" 
+      name="username"
+      [(ngModel)] = "account.username"
+      #username = "ngModel"
+      value="{{account.username}}">
+      <!-- <small id="smtpaddress" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+
+    <div class="form-group">
+      <label for="inServerAddress">In Server Address</label>
+      <input type="text" 
+      class="form-control" 
+      id="inServerAddress" 
+      aria-describedby="inServerAddress" 
+      name="inServerAddress"
+      [(ngModel)] = "account.inServerAddress"
+      #inServerAddress = "ngModel"
+      value="{{account.inServerAddress}}">
+      <!-- <small id="smtpaddress" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+
+    <div class="form-group">
+      <label for="inServerPort">In Server Port</label>
+      <input type="text" 
+      class="form-control" 
+      id="inServerPort" 
+      aria-describedby="inServerPort" 
+      name="inServerPort"
+      [(ngModel)] = "account.inServerPort"
+      #inServerPort = "ngModel"
+      value="{{account.inServerPort}}">
+      <!-- <small id="smtpaddress" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+
+    <div class="form-group">
+      <label for="inServerType">In Server Type</label>
+      <input type="text" 
+      class="form-control" 
+      id="inServerType" 
+      aria-describedby="inServerType"
+      name="inServerType"
+      [(ngModel)] = "account.inServerType"
+      #inServerType = "ngModel" 
+      value="{{account.inServerType}}">
+      <!-- <small id="smtpaddress" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+
+
+    <div class="form-group">
+      <label for="smtpPort">SMTP Port</label>
+      <input type="text" 
+      class="form-control" 
+      id="smtpPort" 
+      aria-describedby="smtpPort" 
+      name="smtpPort"
+      [(ngModel)] = "account.smtpPort"
+      #smtpPort = "ngModel" 
+      value="{{account.smtpPort}}">
+      <!-- <small id="smtpaddress" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+    </div>
+
+
+
+
+
+
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <div class="input-group mb-3">
+       
+        <input [type]="show ? 'text' : 'password'" 
+        class="form-control" 
+        id="password"
+        name="password"
+        [(ngModel)] = "account.password"
+        #password = "ngModel" 
+        value="{{account.password}}" 
+        aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary btn-show"  type="button" (click)="passwordShow()"><i class="material-icons">
+            remove_red_eye
+            </i></button>
+        </div>
+      </div>
+      
+
+
+
+
+      
+      
+    </div>
+ 
+    
+
+
+    <div class="modal-footer form-group btn-form">
+      <button  class="btn btn-success btn-block btn-confirm">Confirm Changes</button>
+      <button class="btn btn-danger btn-block btn-close"  (ngClick)="closeDialog()">Close</button>
+      
+    
+     
+    </div>
+  </form
+  >
+
+
+
+
+</div>
+
+
+
+
+<!-- 
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+          <form>
+            <div class="form-group">
+              <label for="first-name" class="col-form-label">First Name:</label>
+              <input type="text" class="form-control" id="first-name">
+            </div>
+            <div class="form-group">
+              <label for="last-name" class="col-form-label">Last Name:</label>
+              <input type="text" class="form-control" id="last-name">
+            </div>
+
+            <div class="form-group">
+              <label for="full-name" class="col-form-label">Displayed Name:</label>
+              <input type="text" class="form-control" id="full-name" >
+            </div>
+
+            <div class="form-group">
+              <label for="user-name" class="col-form-label">Username:</label>
+              <input type="text" class="form-control" id="user-name">
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="col-form-label">Password:</label>
+              <input type="text" class="form-control" id="password">
+            </div>
+
+            <div class="form-group">
+              <label for="emailaddress" class="col-form-label">Email:</label>
+              <input type="text" class="form-control" id="emailaddress">
+            </div>
+
+           
+           
+
+
+          </form>
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-lg btn-block btn-confirm">Save changes</button>
+        <button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+ -->

@@ -1,0 +1,38 @@
+.mat-form-field{
+    width: 100%;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+
+.mat-input-element {
+    caret-color: #19f120;
+}
+
+
+
+.btn-confirm{
+    margin-right: 0;
+}
+
+
+.btn-close{
+    background-color: #d0d0d0;
+    color: white;
+    font-size: 16px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    border: 0;
+}
+
+h2{
+    text-align: center;
+}
+
+.btn-show{
+    padding-bottom: 0;
+
+}
+
