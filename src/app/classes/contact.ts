@@ -1,10 +1,11 @@
+import { Employee } from './../service/httpclient.service';
 export class Contact {
-
-    constructor(
-   
-        public displayname: string,
-        public firstname: string,
-        public lastname: string,
-        public password: string
-      ) { }
+        
+         user: Employee;
+         id : number;
+         displayName: string;
+         firstname: string;
+         lastname: string;
+         password: string;
+     
 }

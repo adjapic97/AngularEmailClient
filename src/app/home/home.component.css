@@ -51,11 +51,10 @@ small{
 }
 
 .show-message-in-big{
-    padding-top: 40px;
+    padding-top: 50px;
     border: 4px;
     border: 4px;
-    background-color: #ff8f361f;
-    border-radius: 10px;
+    background-color: #6767671f;
     padding-left: 50px;
     padding-right: 50px;
 }
@@ -105,4 +104,32 @@ small{
     font-size: 30px;
     top: 7px;
     right: 3px;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+
+  .avatar:hover{
+    transform: scale(1.1);
+  }
+
+  #senderAddress{
+    background-color: transparent;
+    border: none;
+    font-size: 1.4rem;
+  }
+
+  .form-control[readonly] {
+    background-color: #ffffff;
+    opacity: 1;
+}
+
+.navbar-search-messages{
+    background-color: #6767671f!important;
 }

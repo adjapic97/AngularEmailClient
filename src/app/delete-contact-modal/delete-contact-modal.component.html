@@ -1,0 +1,16 @@
+<div>
+
+    <div class="modal-body">
+        Are you sure you want to delete Contact : 
+        <small>{{contact.username}}</small>
+        
+        
+      </div>
+    <div class="modal-footer form-group btn-form">
+        <button  class="btn btn-success btn-danger" (click)= "deleteContact(contact)">Delete</button>
+        <button class="btn btn-secondary  btn-close"  (click)="closeDialog()">Cancel</button>
+        
+      
+       
+      </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3>Image Uploading Module</h3>
+            <div>
+                <label for="file-upload" class="custom-file-upload">
+                    Upload Picture
+                </label>
+            <input type="file" id="file-upload"  (change)="onFileChanged($event)">
+            
+            </div>
+            
+     
+            <hr />
+           
+        </div>
+
+
+        <div class="col-sm-12">
+            <img [src]="imgURL" height="100%" width="100%" *ngIf="imgURL">
+        </div>
+        
+        <div class="col-sm-12">
+            <input type="button"  *ngIf="imgURL" class="btn btn-primary btn-block btn-upload" (click)="onUpload(contact)" value="upload">
+        </div>
+    </div>
+</div>
+

@@ -38,4 +38,10 @@ export class TokenStorageService {
   public getUsername(){
     return JSON.parse(JSON.parse(sessionStorage.getItem('auth-user')).username);
   }
+
+  public selectedAccount(selectedAccount){
+  
+    
+    window.sessionStorage.setItem('selectedAccount', JSON.stringify(selectedAccount));
+  }
 }

@@ -3,27 +3,47 @@
   <div class="col-md-4 messages-container">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">Messages </h3>
-        <button class=" btn btn-success btn-new-message"> <i class="material-icons">
-          create
-          </i> </button>
-        <div class="pull-right">
-          <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
-          </span>
-        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-search-messages">
+         
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+             
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">
+                    search
+                    </i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">By Title</a>
+                  <a class="dropdown-item" href="#">By Sender</a>
+                  <a class="dropdown-item" href="#">By Content</a>
+                  <a class="dropdown-item" href="#">By AttachmentContent</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+              </li>
+
+      
+            </ul>
+       <!--      <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form> -->
+          </div>
+        </nav>
       </div>
       <div class="panel-body">
-        <form class="form-inline">
-        
-        
-          <div class="custom-control custom-checkbox my-1 mr-sm-2">
-            <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">            
-          </div>
-        
-          <button type="submit" class="btn btn-primary my-1">Submit</button>
-        </form>
+    
       </div>
-      <table class="table table-hover table-fixed" id="dev-table">
+
+
+      
+      <table class="table table-hover table-fixed table-sm" id="dev-table">
         <thead>
           <tr>
             <th>From</th>
@@ -44,12 +64,12 @@
                   mail_outline
                   </i>
               {{message.from}}
-              <button style="background-color: transparent; border: 0; padding:0;" (click)="clickMessage2(message)"><i class="material-icons delete-icon" >
-                delete
-                </i></button>
+           
         
                 <br>
-                <p><small>{{message.dateTime}} </small></p>
+                <p><small>{{message.dateTime}} <i class="material-icons delete-icon"  (click)="deleteMessageModal(message)">
+                  delete
+                  </i> </small></p>
 
             </td>
 
@@ -69,29 +89,74 @@
         <form>
      
           <div class="form-group">
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <img src="assets/img/avatar.png" alt="Avatar" class="avatar">
+
+              </div>
+              <input 
+              readonly 
+              type="text" 
+              class="form-control" 
+              id="senderAddress" 
+              name="from"
+              [(ngModel)]="isItClicked ? clickMess.from : originalValue"
+              >
+            </div>
+
+
             
-            <input type="text" class="form-control" id="senderAddress" placeholder="sender@email.com">
+          
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
              
-            <input type="text" class="form-control" id="ccInput" placeholder="cc">
+            <input 
+             readonly
+              type="text" 
+              class="form-control" 
+              id="ccInput" 
+              name="cc"
+              [(ngModel)]="isItClicked ? clickMess.cc : originalValue"
+              >
             </div>
             <div class="form-group col-md-6">
               
-              <input type="text" class="form-control" id="bccInput" placeholder="bcc">
+              <input
+              readonly 
+              type="text"
+              class="form-control"
+              id="bccInput" 
+              name="bcc"
+              [(ngModel)] = "isItClicked ? clickMess.bcc : originalValue"
+              >
             </div>
           </div>
           <div class="form-group">
          
-            <input type="text" class="form-control" id="subjectInput" placeholder="Subject">
+            <input 
+            readonly
+            type="text" 
+            class="form-control" 
+            id="subjectInput" 
+            name="subject"
+            [(ngModel)]= "isItClicked ? clickMess.subject : originalValue"
+            >
           </div>
           <div class="form-group">
             
-            <textarea class="form-control" id="contentInput" rows="20"></textarea>
+            <textarea class="form-control" 
+            readonly
+            id="contentInput" 
+            rows="20"
+            name="content"
+            [(ngModel)]="isItClicked ? clickMess.content : originalValue"
+            ></textarea>
           </div>
 
-        </form>
+        </form
+        >
       </div>
 
 

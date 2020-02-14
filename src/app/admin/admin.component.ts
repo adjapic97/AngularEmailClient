@@ -6,6 +6,7 @@ import { TokenStorageService } from './../service/token-storage.service';
 import { UserService } from './../service/userServices/user.service';
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DeleteAccountModalComponent } from '../delete-account-modal/delete-account-modal.component';
 
 
 @Component({
@@ -31,7 +32,11 @@ export class AdminComponent implements OnInit {
   dialogValue:string; 
   sendValue:string;
   users : Employee[];
+  numbers;
+  searchBy: string;
 
+  /* Pagination Tryout */
+  
 
   constructor(private userService: UserService, 
     private tokenService: TokenStorageService,
@@ -45,7 +50,7 @@ export class AdminComponent implements OnInit {
       this.byemail = false;
       this.fuzzysearch = false;
       this.booleanSearch = false;
-      
+      this.numbers = Array(5).fill(5).map((x,i)=>i); // [0,1,2,3,4]
     }
 
   ngOnInit() {
@@ -59,13 +64,11 @@ export class AdminComponent implements OnInit {
      /// this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
 
       this.username = user.username;
+  
+        
+   
     }
 
-
-    this.httpClientService.getEmployees().subscribe(
-      response =>this.handleSuccessfulResponseUser(response),
-     );
-  
 
     this.userService.getAdminBoard().subscribe(
       data => {
@@ -78,7 +81,7 @@ export class AdminComponent implements OnInit {
     );
 
 
-    this.accountService.getAccounts().subscribe(
+    this.accountService.getAccounts(0).subscribe(
       response => this.handleSuccessfulResponse(response),
     );
 
@@ -102,14 +105,24 @@ export class AdminComponent implements OnInit {
   andOr(): void{
     this.andor = !this.andor;
     this.byusername = false;
+    this.searchBy = 'andor'
     if(this.andor == false){
       console.log("andor search closed");
     }
     else{
       console.log("andor search opened");
+      console.log(this.searchBy)
     }
     
   }
+
+  
+  clickNext(page: number){
+    this.accountService.getAccounts(page).subscribe(
+      response => this.handleSuccessfulResponse(response),
+    );
+  }
+
 
   searchByUsername(): void{
     this.byusername = !this.byusername;
@@ -118,6 +131,8 @@ export class AdminComponent implements OnInit {
     this.byemail = false;
     this.booleanSearch = false;
     this.fuzzysearch = false;
+    this.searchBy = 'username';
+    console.log(this.searchBy)
   }
 
 
@@ -141,7 +156,8 @@ export class AdminComponent implements OnInit {
       width: '550px',
       backdropClass:'custom-dialog-backdrop-class',
       panelClass:'custom-dialog-panel-class',
-      data: {dataUsers : this.users}
+      data: { accounts: this.accounts}
+      
     });
 
     createDialogRef.afterClosed().subscribe(result => {
@@ -153,6 +169,18 @@ export class AdminComponent implements OnInit {
     });
 
 
+  }
+
+
+  deleteAccountModal(account){
+    const deleteDialogRef = this.dialog.open(DeleteAccountModalComponent, {
+      width: '350px',
+      backdropClass:'custom-dialog-backdrop-class',
+      panelClass:'custom-dialog-panel-class',
+      data: {accountToDelete : account, accounts: this.accounts}
+      
+    })
+    console.log("delete this account: " + account.username)
   }
 
 

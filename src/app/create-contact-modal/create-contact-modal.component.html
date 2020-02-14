@@ -1,0 +1,451 @@
+<!-- dialog-modal-example.component.html -->
+<div *ngIf="isSuccessful">
+    <h2>Edited Contact</h2>
+    
+  </div>
+  
+  
+  <div *ngIf="update">
+  
+    
+    <form
+    
+    name="contactChoose"
+    (ngSubmit)=" onSubmit()"
+    f="contact"
+    >
+   
+  
+  
+  
+  
+  
+
+  
+      <div class="form-group" *ngIf="update">
+        <label for="displayName">Displayed Name</label>
+        <input 
+        type="text" 
+        class="form-control" 
+        id="displayName" 
+        aria-describedby="displayName" 
+        name="displayName"
+        [(ngModel)] = "contactChoose.displayName"
+        #displayName = "ngModel"
+        value="{{contactChoose.displayName}}">
+      </div>
+   
+
+
+
+
+
+       <div class="form-group" *ngIf="update">
+        <label for="username">First Name</label>
+        <input 
+        
+        type="text" 
+        class="form-control" 
+        id="firstname" 
+        aria-describedby="firstname" 
+        name="firstname"
+        [(ngModel)] = "contactChoose.firstname"
+        #firstname = "ngModel"
+        value="{{contactChoose.firstname}}">
+      </div> 
+
+
+           
+ 
+   
+      <div class="form-group" *ngIf="update">
+        <label for="inServerAddress">Last Name</label>
+        <input type="text" 
+        
+        class="form-control" 
+        id="lastname" 
+        aria-describedby="lastname" 
+        name="lastname"
+        [(ngModel)] = "contactChoose.lastname"
+        #lastname = "ngModel"
+        value="{{contactChoose.lastname}}">
+      </div> 
+
+
+      
+    
+  
+       <div class="form-group"  *ngIf="update">
+        <label for="inServerPort">E Mail</label>
+        <input type="text" 
+       
+        class="form-control" 
+        id="email" 
+        aria-describedby="email" 
+        name="email"
+        [(ngModel)] = "contactChoose.email"
+        #email = "ngModel"
+        value="{{contactChoose.email}}">
+      </div> 
+
+      
+
+    
+
+  
+      <div class="form-group" *ngIf="update">
+        <label for="inServerPort">About Contact</label>
+        <input type="text" 
+        
+        class="form-control" 
+        id="text" 
+        aria-describedby="text" 
+        name="text"
+        [(ngModel)] = "contactChoose.text"
+        #text = "ngModel"
+        value="{{contactChoose.text}}">
+      </div>
+ 
+  
+
+
+        <!-- CREATE -->
+
+        <div class="form-group"  *ngIf="create">
+          <label for="displayName">Display Name:</label>
+          <input type="text" [(ngModel)]="contact.displayName" placeholder="Display Name" name="displayName" class="form-control" id="displayName">
+        </div>
+      
+    
+
+
+  <!-- 
+      <div class="form-group"  *ngIf="create">
+        <label for="displayName">Displayed Name</label>
+        <input 
+        type="text" 
+        class="form-control" 
+        id="displayName" 
+        aria-describedby="displayName" 
+        name="displayName"
+        [(ngModel)] = "contact.displayName"
+        #displayName = "ngModel"
+       >
+      </div> -->
+
+
+           
+   <div class="form-group"  *ngIf="create">
+    <label for="firstname">First Name:</label>
+    <input type="text" [(ngModel)]="contact.firstname" placeholder="First Name" name="firstname" class="form-control" id="firstname">
+  </div>
+  
+<!--       <div class="form-group"  *ngIf="create">
+        <label for="firstname">First Name</label>
+        <input 
+       
+        type="text" 
+        class="form-control" 
+        id="firstname" 
+        aria-describedby="firstname" 
+        name="firstname"
+        [(ngModel)] = "contact.firstname"
+        #firstname = "ngModel"
+        >
+      </div> -->
+
+
+      <div class="form-group"  *ngIf="create">
+        <label for="lastname">Last Name:</label>
+        <input type="text" [(ngModel)]="contact.lastname" placeholder="Last Name" name="lastname" class="form-control" id="lastname">
+      </div>
+    
+    
+  
+<!--       <div class="form-group" *ngIf="create">
+        <label for="lastname">Last Name</label>
+        <input type="text" 
+        
+        class="form-control" 
+        id="lastname" 
+        aria-describedby="lastname" 
+        name="lastname"
+        [(ngModel)] = "contact.lastname"
+        #lastname = "ngModel"
+        >
+      </div> -->
+
+
+      <div class="form-group"  *ngIf="create">
+        <label for="email">E mail:</label>
+        <input type="email" [(ngModel)]="contact.email" placeholder="Email" name="email" class="form-control" id="email">
+      </div>
+  
+ <!--      <div class="form-group" *ngIf="create">
+        <label for="email">E Mail</label>
+        <input type="text" 
+        
+        class="form-control" 
+        id="email" 
+        aria-describedby="email" 
+        name="email"
+        [(ngModel)] = "contact.email"
+        #email = "ngModel"
+        >
+      </div> -->
+
+  
+      <div class="form-group"  *ngIf="create">
+        <label for="text">About Contact:</label>
+        <input type="text" [(ngModel)]="contact.text" placeholder="About" name="text" class="form-control" id="text">
+      </div>
+    
+<!-- 
+      <div class="form-group"  *ngIf="create">
+        <label for="text">About Contact</label>
+        <input type="text" 
+       
+        class="form-control" 
+        id="text" 
+        aria-describedby="text" 
+        name="text"
+        [(ngModel)] = "contact.text"
+        #text = "ngModel"
+        >
+      </div> -->
+
+
+   <!--    <select class="form-control col-lg-8" #selectedValue name="selectedValue" id="selectedValue" [(ngModel)]="selectedValue" (ngModelChange)="assignCorporationToManage($event)">
+        <option *ngFor="let corporation of user_corporations" [ngValue]="corporation">{{corporation.corp_name}}</option>
+    </select>
+ -->
+
+      <div class="form-group" *ngIf="create">
+        <label for="user">Assign contact to User:</label>
+        <div class="input-group mb-3"  name="user" id="user">
+        
+          <select class="form-control"
+          let selectedValue name="selectedValue" id="selectedValue" [(ngModel)]="selectedValue"  (ngModelChange)="setNewUser($event)"
+           class="custom-select" id="inputGroupSelect01" >
+            
+            <option  *ngFor="let user of users" [ngValue]="user">{{user.username}}</option>
+         
+          </select >
+        </div>
+  
+  
+      </div>
+
+   
+
+
+  
+  
+
+      
+  
+  
+      <div class="modal-footer form-group btn-form">
+        <button type="submit"  class="btn btn-success btn-block btn-confirm">Confirm Changes</button>
+        <button type="cancel" class="btn btn-danger btn-block btn-close"  (click)="closeDialog()">Close</button>
+        
+      
+       
+      </div>
+    </form
+    >
+    
+  
+  
+  
+  
+  </div>
+
+
+
+
+<!-- CREATE -->
+
+
+
+
+
+
+<!-- dialog-modal-example.component.html -->
+<div *ngIf="isSuccessful && create" >
+  <h2>Created Contact</h2>
+  
+</div>
+
+<div *ngIf="isSignUpFailed && create" >
+  <h2>Error while creating contact... Check inputs again
+  </h2>
+  
+</div>
+
+<div *ngIf="create">
+
+  
+  <form
+  (ngSubmit)="onSubmitCreate()"
+  *ngIf="!isSuccessful"
+>
+ 
+
+
+      <!-- CREATE -->
+
+      <div class="form-group"  *ngIf="create">
+        <label for="displayname">Display Name:</label>
+        <input type="text" [(ngModel)]="contact.displayName" placeholder="Display Name" name="displayname" class="form-control" id="displayname">
+      </div>
+    
+  
+
+
+<!-- 
+    <div class="form-group"  *ngIf="create">
+      <label for="displayName">Displayed Name</label>
+      <input 
+      type="text" 
+      class="form-control" 
+      id="displayName" 
+      aria-describedby="displayName" 
+      name="displayName"
+      [(ngModel)] = "contact.displayName"
+      #displayName = "ngModel"
+     >
+    </div> -->
+
+
+         
+ <div class="form-group"  *ngIf="create">
+  <label for="firstname">First Name:</label>
+  <input type="text" [(ngModel)]="contact.firstname" placeholder="First Name" name="firstname" class="form-control" id="firstname">
+</div>
+
+<!--       <div class="form-group"  *ngIf="create">
+      <label for="firstname">First Name</label>
+      <input 
+     
+      type="text" 
+      class="form-control" 
+      id="firstname" 
+      aria-describedby="firstname" 
+      name="firstname"
+      [(ngModel)] = "contact.firstname"
+      #firstname = "ngModel"
+      >
+    </div> -->
+
+
+    <div class="form-group"  *ngIf="create">
+      <label for="lastname">Last Name:</label>
+      <input type="text" [(ngModel)]="contact.lastname" placeholder="Last Name" name="lastname" class="form-control" id="lastname">
+    </div>
+  
+  
+
+<!--       <div class="form-group" *ngIf="create">
+      <label for="lastname">Last Name</label>
+      <input type="text" 
+      
+      class="form-control" 
+      id="lastname" 
+      aria-describedby="lastname" 
+      name="lastname"
+      [(ngModel)] = "contact.lastname"
+      #lastname = "ngModel"
+      >
+    </div> -->
+
+
+    <div class="form-group"  *ngIf="create">
+      <label for="email">E mail:</label>
+      <input type="email" [(ngModel)]="contact.email" placeholder="Email" name="email" class="form-control" id="email">
+    </div>
+
+<!--      <div class="form-group" *ngIf="create">
+      <label for="email">E Mail</label>
+      <input type="text" 
+      
+      class="form-control" 
+      id="email" 
+      aria-describedby="email" 
+      name="email"
+      [(ngModel)] = "contact.email"
+      #email = "ngModel"
+      >
+    </div> -->
+
+
+    <div class="form-group"  *ngIf="create">
+      <label for="text">About Contact:</label>
+      <input type="text" [(ngModel)]="contact.text" placeholder="About" name="text" class="form-control" id="text">
+    </div>
+  
+<!-- 
+    <div class="form-group"  *ngIf="create">
+      <label for="text">About Contact</label>
+      <input type="text" 
+     
+      class="form-control" 
+      id="text" 
+      aria-describedby="text" 
+      name="text"
+      [(ngModel)] = "contact.text"
+      #text = "ngModel"
+      >
+    </div> -->
+
+
+
+
+    <div class="form-group" *ngIf="create">
+      <label for="user">Assign contact to User:</label>
+      <div class="input-group mb-3"  name="user" id="user">
+      
+        <select class="form-control"
+        let selectedValue name="selectedValue" id="selectedValue" [(ngModel)]="selectedValue"  (ngModelChange)="setNewUser($event)"
+         class="custom-select" id="inputGroupSelect01" >
+          
+          <option  *ngFor="let user of users" [ngValue]="user">{{user.username}}</option>
+       
+        </select >
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+    
+
+
+    <div class="modal-footer form-group btn-form">
+      <button type="submit"  class="btn btn-success btn-block btn-confirm">Confirm Changes</button>
+      <button type="cancel" class="btn btn-danger btn-block btn-close"  (click)="closeDialog()">Close</button>
+      
+    
+     
+    </div>
+  </form
+  >
+  
+
+
+
+
+</div>
+
+
+
+
+
+
+
+  
+  

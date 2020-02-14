@@ -9,7 +9,7 @@ import { authInterceptorProviders } from './../_helpers/auth.interceptor';
 import { EmployeeComponent } from './employee/employee.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
@@ -28,6 +28,14 @@ import {  MatFormFieldModule,
   MatInputModule,
   MatButtonModule, } from '@angular/material';
 import { CreateAccountModalComponent } from './create-account-modal/create-account-modal.component';
+import { DeleteMessageModalComponent } from './delete-message-modal/delete-message-modal.component';
+import { ManageusersComponent } from './manageusers/manageusers.component';
+import { CreateContactModalComponent } from './create-contact-modal/create-contact-modal.component';
+import { DeleteAccountModalComponent } from './delete-account-modal/delete-account-modal.component';
+import { DeleteContactModalComponent } from './delete-contact-modal/delete-contact-modal.component';
+import { UploadPictureModalComponent } from './upload-picture-modal/upload-picture-modal.component';
+import { PreviewPicturesComponent } from './preview-pictures/preview-pictures.component';
+import { JwPaginationComponent } from 'jw-angular-pagination';
 
 @NgModule({
   declarations: [
@@ -46,6 +54,14 @@ import { CreateAccountModalComponent } from './create-account-modal/create-accou
     UseraccountComponent,
     ModalComponent,
     CreateAccountModalComponent,
+    DeleteMessageModalComponent,
+    ManageusersComponent,
+    CreateContactModalComponent,
+    DeleteAccountModalComponent,
+    DeleteContactModalComponent,
+    UploadPictureModalComponent,
+    PreviewPicturesComponent,
+    JwPaginationComponent
     
   
   ],
@@ -59,9 +75,21 @@ import { CreateAccountModalComponent } from './create-account-modal/create-accou
     MatFormFieldModule,
     MatDialogModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule,
+    
   ],
-  entryComponents:[ ModalComponent , CreateAccountModalComponent],
+
+
+  entryComponents:[
+    ModalComponent , 
+    CreateAccountModalComponent, 
+    DeleteMessageModalComponent, 
+    CreateContactModalComponent, 
+    DeleteAccountModalComponent, 
+    DeleteContactModalComponent, 
+    UploadPictureModalComponent,
+    PreviewPicturesComponent],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })

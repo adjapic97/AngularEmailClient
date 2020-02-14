@@ -1,7 +1,8 @@
+import { Employee } from './../service/httpclient.service';
 import { User } from '../service/authentication.service';
 
 export class Account{
-    user: User[];
+    user: Employee;
     smtpAddress: string;
     inServerType: number;
     smtpPort: number;

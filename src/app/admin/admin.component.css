@@ -67,3 +67,67 @@ i{
     border-radius: 0;
     border-top: 0;
 }
+
+.page-link{
+    background-color: #1e6d70;
+    border: 1px solid #287679;
+    color: white;
+    border-radius: 0;
+}
+
+.pagination-col{
+    color: white;
+}
+
+#andOrSelectFirst{
+    height: 43px;
+    position: relative;
+    top: 8px;
+    border-radius: 0;
+}
+
+#andOrSelect{
+    height: 43px;
+    position: relative;
+    top: 8px;
+    border-radius: 0;
+}
+
+#andOrSelectSecond{
+    height: 43px;
+    position: relative;
+    top: 8px;
+    border-radius: 0; 
+}
+
+#searchby{
+    height: 43px;
+    position: relative;
+    top: 8px;
+    border-radius: 0; 
+}
+
+#searchtype{
+    height: 43px;
+    position: relative;
+    top: 8px;
+    border-radius: 0; 
+}
+
+.btn-search-all{
+    height: 43px;
+    border-radius: 0;
+    width: 100px;
+}
+
+.by-username-input{
+    height: 43px;
+    width: 300px;
+}
+
+.select-search-style{
+    height: 43px;
+    position: relative;
+    top: 8px;
+    border-radius: 0; 
+}

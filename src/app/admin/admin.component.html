@@ -58,7 +58,7 @@
             
               <div class="input-group mb-3">
          
-                <select class="custom-select" id="andOrSelectFirst">
+                <select class="custom-select select-search-style" id="andOrSelectFirst">
                   <option selected></option>
                   <option value="1">Full Name</option>
                   <option value="2">Username</option>
@@ -69,7 +69,7 @@
               
               <div class="input-group mb-3">
          
-                <select class="custom-select" id="andOrSelect">
+                <select class="custom-select select-search-style" id="andOrSelect">
                   <option selected>And Or</option>
                   <option value="1">And</option>
                   <option value="2">Or</option>
@@ -81,7 +81,7 @@
 
             <div class="input-group mb-3">
          
-              <select class="custom-select" id="andOrSelectSecond">
+              <select class="custom-select select-search-style" id="andOrSelectSecond">
                 <option selected></option>
                 <option value="1">Full Name</option>
                 <option value="2">Username</option>
@@ -89,7 +89,7 @@
               </select>
             </div>
 
-            <button class="btn btn-success" type="submit">Search</button>
+            <button class="btn btn-success btn-search-all" type="submit">Search</button>
           </form>
 
           <!-- BY DISPLAY NAME SEARCH FORM -->
@@ -98,8 +98,26 @@
          <!-- BY USERNAME SEARCH FORM -->
          <form class="form-inline my-2 my-lg-0" *ngIf="byusername">
            
-            <input class="form-control mr-sm-2" type="search" placeholder="Searching by Username..." aria-label="Search">
-            <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+          <div class="input-group mb-3">
+         
+            <select class="custom-select select-search-style" id="searchby" >
+              <option selected>Search by</option>
+              <option value="1">Full Name</option>
+              <option value="2">Username</option>
+              <option value="2">Email </option>
+            </select>
+          </div>
+            <input class="form-control by-username-input" type="searchtype" placeholder="Searching by Username..." aria-label="Search">
+            <div class="input-group mb-3">
+         
+              <select class="custom-select select-search-style" id="searchtype">
+                <option selected>Search type</option>
+                <option value="1">Full Name</option>
+                <option value="2">Username</option>
+                <option value="2">Email </option>
+              </select>
+            </div>
+            <button class="btn btn-success btn-search-all" type="submit">Search</button>
          </form>
 
 
@@ -124,7 +142,7 @@
           
           </tr>
         </thead>
-        <tbody>
+        <tbody >
             <tr *ngFor="let account of accounts">
                 <td>{{account.displayName}}</td>
                 <td>{{account.username}}</td>
@@ -132,13 +150,30 @@
                 
                 <td><button class="btn btn-warning btn-block"  (click)="openDialog(account)">Edit Account
                  </button></td>
-                  <td><button class="btn btn-danger  btn-block" (click)="deleteEmployee(account)"> Delete </button></td>
+                  <td><button class="btn btn-danger  btn-block" (click)="deleteAccountModal(account)"> Delete </button></td>
                 </tr>
         </tbody>
           </table>
+       
     </div>
+  <div class="col-sm-4">
+    
+  </div>
+  <div class="col-sm-4 pagination-col">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination  ">
+        <li class="page-item"><a class="page-link">Previous</a></li>
 
+        <li class="page-item" *ngFor="let i of numbers"><a class="page-link"(click)= "clickNext(i)">{{i}}</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+ 
+  </div>
 
+  <div class="col-sm-4">
+    
+  </div>
  
 
   </div>

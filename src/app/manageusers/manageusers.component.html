@@ -1,0 +1,269 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12 admin-column" *ngIf="showAdminBoard">
+  <!--       <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <button class="btn btn-secondary">ANDOR</button>
+          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          
+          <div class="input-group-append">
+           
+       
+          
+            <button class="btn btn-outline-secondary" type="button">Search</button>
+          </div>
+        </div> -->
+  
+      </div>
+      <div class="col-sm-12 admin-column" *ngIf="showAdminBoard">
+  
+        <nav class="navbar navbar-expand-lg navbar-light bg-light list-nav">
+          
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" (click)="openCreateDialog()"><i class="material-icons person-add-icon">
+                  person_add
+                  </i> <span class="sr-only">(current)</span></a>
+              </li>
+          
+              <li class="nav-item dropdown">
+                <a class="nav-link " href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons icon-search-choose">
+                    search
+                    </i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+  
+                   <!--  <a class="dropdown-item" (click) = "searchByFirstName()">By First Name</a> -->
+                    <a class="dropdown-item" (click) = "normalSearch()">Normal Search</a>
+                   <!--  <a class="dropdown-item" (click) = "searchByRemar()">By Remark</a> -->
+  
+                  <div class="dropdown-divider"></div>
+  
+                    <a class="dropdown-item"  (click) = "andOr()">And Or Search</a>
+    <!--                 <a class="dropdown-item" (click) = "fuzzySearch()">Fuzzy Search</a>
+                    <a class="dropdown-item"(click) = "boolSearch()">Boolean Search</a> -->
+  
+                </div>
+              </li>
+         
+            </ul>
+       
+            <form class="form-inline my-2 my-lg-0" *ngIf="andor" (ngSubmit)="onSubmitSearchAndOr()">
+  <!--             <button class="btn btn-secondary" (click) = "andOrF()"> collapse search</button>
+   -->         
+            <div class="form-group">
+              <input class="form-control" id="searchParam1" type="search" [(ngModel)]="searchparams.searchParam1" name="searchParam1" placeholder="Search" aria-label="Search">
+            </div>
+
+            <div class="form-group">              
+              <div class="input-group mb-3">
+        
+                <select class="custom-select select-search-style" id="searchTarget1"   (change)="setSearchTarget1($event)">
+                  <option value= "empty">Select...</option>
+                  <option  value="firstname" >First Name</option>
+                  <option value="lastname">Lastname</option>
+                  <option value="remark">Remark </option>
+                </select>
+              </div>          
+            </div>
+
+            <div class="form-group">
+              <div class="input-group mb-3">
+           
+                <select class="custom-select" id="andOrSelect" (change)="setBooleanOperation($event)">
+                  <option selected value="or">AON</option>
+                  <option value="and">AND</option>
+                  <option value="or">OR</option>
+                  <option value="not">NOT</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input class="form-control " type="search" placeholder="Search" aria-label="Search" id="searchParam2" [(ngModel)]="searchparams.searchParam2" name="searchParam2">
+            </div>  
+   
+
+            <div class="form-group">
+              <div class="input-group mb-3">
+        
+                <select class="custom-select select-search-style" id="searchTarget2"   (change)="setSearchTarget2($event)">
+                  <option value= "empty">Select...</option>
+                  <option  value="firstname" >First Name</option>
+                  <option value="lastname">Lastname</option>
+                  <option value="remark">Remark </option>
+                </select>
+              </div>
+            </div>
+            
+
+            <div class="form-group">
+         
+              <div class="input-group mb-3">
+         
+                <select class="custom-select select-search-style" id="searchtypeandor" (change)="setSearchType($event)" >
+                  <option selected>Search type</option>
+                  <option value="Term">Term </option>
+                  <option value="Phrase">Phrase </option>
+                  <option value="Fuzzy">Fuzzy </option>
+                </select>
+              </div>
+  
+            </div>
+                
+        <div class="form-group">
+          <button class="btn btn-success btn-search-all" type="submit">Search</button>
+
+        </div>
+  
+
+            </form>
+
+
+
+
+
+         
+            <!-- BY LAST NAME SEARCH FORM -->
+            <form  id= "lastNameSearchForm" class="form-inline my-2 my-lg-0" *ngIf="isnormalSearch" (ngSubmit)="onSubmitSearch()">
+
+
+              
+
+
+    <div class="form-group" *ngIf="create">
+      <label for="user">Assign contact to User:</label>
+      <div class="input-group mb-3"  name="user" id="user">
+      
+        <select class="form-control"
+        let selectedValue name="selectedValue" id="selectedValue" [(ngModel)]="selectedValue"  (ngModelChange)="setNewUser($event)"
+         class="custom-select" id="inputGroupSelect01" >
+          
+          <option  *ngFor="let user of users" [ngValue]="user">{{user.username}}</option>
+       
+        </select >
+      </div>
+
+
+    </div>
+
+
+
+              <div class="form-group">
+                <div class="input-group mb-3">
+
+              
+         
+                  <select class="custom-select select-search-style" id="searchTarget1"   (change)="setSearchTarget1($event)">
+                    <option value= "empty">Select...</option>
+                    <option  value="firstname" >First Name</option>
+                    <option value="lastname">Lastname</option>
+                    <option value="remark">Remark </option>
+                  </select>
+                </div>
+  
+              </div>
+
+              <div class="form-group">
+                <input id="searchInput" [(ngModel)]="searchparams.searchParam1" class="form-control searchinput" name="searchParam1"type="search" placeholder="Search..." aria-label="Search">
+              </div>
+
+              <div class="form-group" *ngIf="phraseSlop">
+                <input id="slopInput" [(ngModel)]="searchparams.fuzzyPhraseParam" class="form-control searchinput" name="slop" type="number" placeholder="0" >
+
+              </div>
+
+              <div class="form-group">
+                
+                <div class="input-group mb-3">
+         
+                  <select class="custom-select select-search-style" id="searchtype"  (change)="setSearchType($event)" >
+                    <option selected>Search type</option>
+                    <option value="Term">Term Search</option>
+                    <option value="Phrase">Phrase Search</option>
+                    <option value="Fuzzy">Fuzzy Search </option>
+                  </select>
+                </div>
+              </div>
+             
+       
+              
+                <div class="form-group">
+                  <button type="submit" class="btn btn-success btn-search-all"  >Search</button>
+
+                </div>
+                
+
+             </form>
+  
+           <!-- BY USERNAME SEARCH FORM -->
+
+
+<!--            <form id="firstNameSearchForm" class="form-inline my-2 my-lg-0" *ngIf="byFirstName">
+             
+              <input id="firstNameInputSearch" class="form-control mr-sm-2" type="search" placeholder="By First Name.." aria-label="Search">
+              <button class="btn btn-success btn-search-all" type="submit">Search</button>
+           </form> -->
+  
+  
+           <!-- БY EMAIL SEARCH FORM -->
+   
+  
+  
+          </div>
+        </nav>
+  
+  
+      </div>
+      <div class="col-sm-12 " *ngIf="showAdminBoard">
+        <table class="table table-bordered table-hover table-sm ">
+          <thead>
+          <tr>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Edit Contact</th>
+            <th>Delete Contact</th>
+            
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let contact of contacts">
+
+                  <td>
+                    <img src="assets/img/avatar.png" alt="Avatar" class="avatar" *ngIf="!hasProfilePicture" (click)="openImagePreviewModal(contact)"> 
+                    <i class="material-icons add-picture-icon" (click)="uploadPictureModal(contact)">
+                      add_photo_alternate
+                      </i>
+                    {{contact.displayName}}
+                  
+                  </td>
+                  <td>{{contact.email}}</td>
+                  <td>{{contact.firstname}}</td>
+                  <td>{{contact.lastname}}</td>
+
+                  <td><button class="btn btn-warning btn-block"  (click)="openDialog(contact)">Edit Contact
+                   </button></td>
+                    <td><button class="btn btn-danger  btn-block" (click)="deleteContactModal(contact)"> Delete </button></td>
+                  </tr>
+          </tbody>
+            </table>
+      </div>
+  
+  
+   
+  
+    </div>
+  
+  
+  </div>
+  
+  
+  

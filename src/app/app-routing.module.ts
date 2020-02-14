@@ -1,3 +1,4 @@
+import { ManageusersComponent } from './manageusers/manageusers.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path: 'mod', component: BoardModeratorComponent }, */
   { path: 'admin', component: AdminComponent },
   { path: 'user', component: EmployeeComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'manageusers', component: ManageusersComponent}
 ];
 
 @NgModule({

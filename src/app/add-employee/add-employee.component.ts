@@ -8,7 +8,7 @@ import { HttpClientService, Employee } from '../service/httpclient.service';
 })
 export class AddEmployeeComponent implements OnInit {
 
-  user: Employee = new Employee("","","","");
+  user: Employee = new Employee(0,"","","", "");
 
   constructor(
     private httpClientService: HttpClientService
