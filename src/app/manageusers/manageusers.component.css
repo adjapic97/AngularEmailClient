@@ -117,7 +117,7 @@ i{
 }
 
 #slopInput{
-    width: 20px;
+    width: 60px;
 }
 
 #searchTarget1{
@@ -184,4 +184,17 @@ i{
 .person-add-icon:hover{
     transform: scale(1.2);
     color: #E3474B;
+}
+
+
+#searchtypeandor{
+    width: 100px;
+}
+
+#searchParam2{
+    width: 170px;
+}
+
+#maxEditInput{
+    width: 60px;
 }

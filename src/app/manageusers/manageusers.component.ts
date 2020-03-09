@@ -204,12 +204,13 @@ openCreateDialog(): void {
 
 createImageFromBlob(image: Blob) {
   var debug = {img: image};
-  var blob = new Blob([JSON.stringify(debug, null, 2)], {type : 'application/json'});
+  var blob = new Blob([JSON.stringify(debug)], {type : 'image/png'});
   let reader = new FileReader();
   reader.readAsDataURL(blob);
   reader.onloadend = () =>{
-    this.imgUrl = reader.result;
+    this.imgUrl = URL.createObjectURL(reader.result);
   }
+  console.log(this.imgUrl);
 /*   reader.addEventListener("load", () => {
     this.imageBlobUrl = reader.result as string;
   }, false);
@@ -260,9 +261,20 @@ setBooleanOperation(event: any): void {
 setSearchType(event: any): void{
   this.searchparams.searchType = event.target.value;
   console.log(this.searchparams.searchType)
-  if(this.searchparams.searchType = "Phrase"){
-      this.phraseSlop = !this.phraseSlop;
+  if(this.searchparams.searchType === "Phrase"){
+      this.phraseSlop = true;
+      this.fuzzysearch = false;
   }
+  else if(this.searchparams.searchType === "Fuzzy"){
+    this.fuzzyMaxEdits = true;
+    this.phraseSlop = false;
+  }
+  else{
+    this.phraseSlop = false;
+    this.fuzzyMaxEdits = false;
+  }
+
+
 }
 
 
@@ -363,8 +375,7 @@ openImagePreviewModal(contact){
   if(this.pictures != null){
     this.noImagesFound = false;
     this.createImageFromBlob(this.pictures[1].pic)
-    
-    var objectURL = URL.createObjectURL(this.imgUrl);
+    var objectURL = this.imgUrl;
   
   }
   else{

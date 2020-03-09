@@ -35,6 +35,7 @@ export class PreviewPicturesComponent implements OnInit {
 
 
   getBackground(imgURL) {
+    console.log(imgURL)
     return this._sanitizer.bypassSecurityTrustUrl(`${imgURL}`);
 
 }

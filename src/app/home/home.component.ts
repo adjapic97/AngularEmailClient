@@ -1,3 +1,4 @@
+import { MainService } from './../service/mainService/main.service';
 import { Photo } from './../classes/Photo';
 import { ImageService } from './../service/imageService/image.service';
 import { DeleteMessageModalComponent } from './../delete-message-modal/delete-message-modal.component';
@@ -14,7 +15,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+
 })
 export class HomeComponent implements OnInit {
   content: string;
@@ -34,7 +36,7 @@ export class HomeComponent implements OnInit {
         .subscribe(page => this.pageMessage = page)
   
   }
-  constructor(private messService : MessageService, private tokenStorage: TokenStorageService, private attachmentService : AttachmentService,public dialog : MatDialog) { 
+  constructor(private mainService: MainService, private messService : MessageService, private tokenStorage: TokenStorageService, private attachmentService : AttachmentService,public dialog : MatDialog) { 
     this.isItClicked = false;
   }
 /*   onSelect(page: number): void {
@@ -43,7 +45,9 @@ export class HomeComponent implements OnInit {
     this.getPageMessage(page);
   } */
   ngOnInit() {
-
+    this.mainService.emitClass.emit(
+      {className : 'container no-margin'}
+    );
      //this.getClient();
      //this.getPageMessage(0);
 

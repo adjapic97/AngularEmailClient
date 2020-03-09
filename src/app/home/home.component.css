@@ -133,3 +133,14 @@ small{
 .navbar-search-messages{
     background-color: #6767671f!important;
 }
+
+:host(.aaContainer){
+    margin-left: 0;
+    background-color: #ff8f36!important;
+}
+
+:host(.dropdown-test){
+    margin-left: 0;
+    background-color: #ff8f36!important;
+}
+

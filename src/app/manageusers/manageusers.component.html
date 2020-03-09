@@ -101,7 +101,17 @@
                 </select>
               </div>
             </div>
-            
+
+            <div class="form-group" *ngIf="phraseSlop">
+              <input id="slopInput" [(ngModel)]="searchparams.fuzzyPhraseParam" class="form-control searchinput" name="slop" type="number" min="1" step="1" max="10" placeholder="0" >
+
+            </div>
+
+            <div class="form-group" *ngIf="fuzzyMaxEdits">
+              <input id="maxEditInput" [(ngModel)]="searchparams.fuzzyPhraseParam" class="form-control searchinput" name="maxEdits" type="number" min="0"  max="2" placeholder="fuzzy" >
+
+            </div>
+
 
             <div class="form-group">
          
@@ -174,8 +184,15 @@
                 <input id="searchInput" [(ngModel)]="searchparams.searchParam1" class="form-control searchinput" name="searchParam1"type="search" placeholder="Search..." aria-label="Search">
               </div>
 
+              
+            <div class="form-group" *ngIf="fuzzyMaxEdits">
+              <input id="maxEditInput" [(ngModel)]="searchparams.fuzzyPhraseParam" class="form-control searchinput" name="maxEdits" type="number" min="0"  max="2" placeholder="fuzzy" >
+
+            </div>
+
+
               <div class="form-group" *ngIf="phraseSlop">
-                <input id="slopInput" [(ngModel)]="searchparams.fuzzyPhraseParam" class="form-control searchinput" name="slop" type="number" placeholder="0" >
+                <input id="slopInput" [(ngModel)]="searchparams.fuzzyPhraseParam" class="form-control searchinput" name="slop" type="number" min="1" step="1" max="10" placeholder="0" >
 
               </div>
 

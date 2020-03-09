@@ -1,3 +1,4 @@
+import { MainService } from './service/mainService/main.service';
 import { MessageService } from './service/messageService/message.service';
 import { CreateAccountModalComponent } from './create-account-modal/create-account-modal.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -5,6 +6,7 @@ import { Account } from './classes/Account';
 import { AccountService } from './service/accountService/account.service';
 import { TokenStorageService } from './service/token-storage.service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',
@@ -19,8 +21,10 @@ export class AppComponent implements OnInit {
   accountsForUser: Account[];
   clickedAccount: Account[];
   isAccountChosen: boolean;
+  emitClassListener = null;
 
-  constructor(private tokenStorageService: TokenStorageService, private accountService: AccountService,public dialog : MatDialog, private messageService : MessageService) { 
+
+  constructor(private mainService: MainService, private tokenStorageService: TokenStorageService, private accountService: AccountService,public dialog : MatDialog, private messageService : MessageService) { 
     this.isAccountChosen = false;
   }
 
@@ -47,7 +51,20 @@ export class AppComponent implements OnInit {
       
 
     }
+
+    this.emitClassListener = this.mainService.emitClass.subscribe(
+      response => {
+   
+      } 
+    )
     
+  }
+
+
+  ngOnDestroy(){
+    if(this.emitClassListener){
+      this.emitClassListener.unsubscribe();
+    }
   }
 
   handleSuccessfulResponse(response)
