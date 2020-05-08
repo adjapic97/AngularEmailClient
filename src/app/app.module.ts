@@ -23,7 +23,7 @@ import { UserboardComponent } from './userboard/userboard.component';
 import { UseraccountComponent } from './useraccount/useraccount.component';
 import { ModalComponent } from './modal/modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {  MatFormFieldModule, 
+import {  MatFormFieldModule,
   MatDialogModule,
   MatInputModule,
   MatButtonModule, } from '@angular/material';
@@ -62,8 +62,8 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     UploadPictureModalComponent,
     PreviewPicturesComponent,
     JwPaginationComponent
-    
-  
+
+
   ],
   imports: [
     BrowserModule,
@@ -77,17 +77,17 @@ import { JwPaginationComponent } from 'jw-angular-pagination';
     MatInputModule,
     MatButtonModule,
     ReactiveFormsModule,
-    
+
   ],
 
 
   entryComponents:[
-    ModalComponent , 
-    CreateAccountModalComponent, 
-    DeleteMessageModalComponent, 
-    CreateContactModalComponent, 
-    DeleteAccountModalComponent, 
-    DeleteContactModalComponent, 
+    ModalComponent ,
+    CreateAccountModalComponent,
+    DeleteMessageModalComponent,
+    CreateContactModalComponent,
+    DeleteAccountModalComponent,
+    DeleteContactModalComponent,
     UploadPictureModalComponent,
     PreviewPicturesComponent],
   providers: [authInterceptorProviders],
